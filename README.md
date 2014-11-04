@@ -64,23 +64,24 @@ produces:
      0 -> List(0, 0),
      1 -> List(1, 1),
       2 -> List(2)
-  )
+    )
+    
 Maps provide efficient lookup of all the values mapped to a certain key. Any collection of pairs can be transformed into a Map using the toMap method. Similarly, any Map can be transformed into a List of pairs using the toList method.
 
 In our case, the collection will be a Word (i.e. a String) and its elements are characters, so the groupBy method takes a function mapping characters into a desired key type.
 
 In the first part of this exercise, we will implement the method wordOccurrences which, given a word, produces its occurrence list. In one of the previous exercises, we produced the occurrence list by recursively traversing a list of characters. This time we will use the groupBy method from the Collections API (hint: you may additionally use other methods, such as map and toList).
 
-  def wordOccurrences(w: Word): Occurrences
+    def wordOccurrences(w: Word): Occurrences
 Next, we implement another version of the method for entire sentences. We can concatenate the words of the sentence into a single word and then reuse the method wordOccurrences that we already have.
 
-  def sentenceOccurrences(s: Sentence): Occurrences
+    def sentenceOccurrences(s: Sentence): Occurrences
   
 Computing Anagrams of a Word
 ====================
 To compute the anagrams of a word, we use the simple observation that all the anagrams of a word have the same occurrence list. To allow efficient lookup of all the words with the same occurrence list, we will have to group the words of the dictionary according to their occurrence lists.
 
-lazy val dictionaryByOccurrences: Map[Occurrences, List[Word]]
+    lazy val dictionaryByOccurrences: Map[Occurrences, List[Word]]
 We then implement the method wordAnagrams which returns the list of anagrams of a single word:
 
     def wordAnagrams(word: Word): List[Word]
